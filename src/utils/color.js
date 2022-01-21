@@ -1,6 +1,8 @@
+import { uid } from 'quasar';
+
 export function createSquare(r, g, b, id, additional = {}) {
   return {
-    id: id || Math.random() * 100000,
+    id: id || uid(),
     r,
     g,
     b,
@@ -8,14 +10,14 @@ export function createSquare(r, g, b, id, additional = {}) {
   };
 }
 
-export function getFitnessSimpleDiff(target, square) {
+export function getDistanceSimpleDiff(target, square) {
   const targetNum = (target.r * 256 * 256) + (target.b * 256) + target.b;
   const squareNum = (square.r * 256 * 256) + (square.b * 256) + square.b;
   const normalized = Math.abs(targetNum - squareNum) / 0xFFFFFF;
   return 1 - normalized;
 }
 
-export function getFitnessRgbComponents(target, square) {
+export function getDistanceRgbComponents(target, square) {
   const componentFit = (a, b) => 1 - (Math.abs(a - b) / 255);
 
   return [
@@ -25,7 +27,7 @@ export function getFitnessRgbComponents(target, square) {
   ].reduce((a, b) => a + b) / 3;
 }
 
-export function getFitnessPerceptual(target, square) {
+export function getDistancePerceptual(target, square) {
   const rmean = (target.r + square.r) / 2;
   const r = target.r - square.r;
   const g = target.g - square.g;

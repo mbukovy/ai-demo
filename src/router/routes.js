@@ -1,5 +1,6 @@
 import MainLayout from 'layouts/MainLayout';
 import Evolution from 'pages/Evolution';
+import NeuralNetwork from 'pages/NeuralNetwork';
 
 const routes = [
   {
@@ -50,7 +51,7 @@ const routes = [
         meta: {
           title: 'Neural Network',
         },
-        component: () => import('pages/Evolution.vue'),
+        component: () => NeuralNetwork,
       },
     ],
   },

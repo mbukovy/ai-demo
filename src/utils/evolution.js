@@ -1,4 +1,4 @@
-import { createSquare, getFitnessPerceptual } from 'src/utils/color';
+import { createSquare, getDistancePerceptual } from 'src/utils/color';
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -27,7 +27,7 @@ export function createPopulation(count) {
 }
 
 export function getFitness(target, square) {
-  return getFitnessPerceptual(target, square);
+  return getDistancePerceptual(target, square);
 }
 
 export function getMatingPool(population) {

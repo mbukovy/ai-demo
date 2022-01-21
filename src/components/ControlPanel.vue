@@ -8,7 +8,7 @@
       <q-card-section class="row items-center no-wrap">
         <div>
           <div class="text-weight-bold">
-            Generation: {{ generation }}
+            {{ generationTitle }}: {{ generation }}
           </div>
         </div>
 
@@ -69,6 +69,11 @@ export default defineComponent({
     playing: {
       type: Boolean,
       default: false,
+    },
+    generationTitle: {
+      required: false,
+      type: String,
+      default: 'Generation',
     },
   },
 

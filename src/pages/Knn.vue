@@ -75,7 +75,7 @@
       </h5>
       <h5
         class="text-center"
-        :class="{'bg-black text-white': resultTag === 'TRUE'}"
+        :class="{'bg-green text-white': resultTag === 'TRUE'}"
       >
         {{ resultTag }}
         <q-icon
@@ -124,7 +124,7 @@
 <script>
 import ColorSquare from 'components/ColorSquare';
 import { generateDataset } from 'src/utils/knn';
-import { createSquare, getFitnessPerceptual, parseSquare } from 'src/utils/color';
+import { createSquare, getDistancePerceptual, parseSquare } from 'src/utils/color';
 
 export default {
   name: 'PageKnn',
@@ -152,7 +152,7 @@ export default {
       const distances = this.dataset.map(
         (square) => ({
           tag: square.tag,
-          distance: getFitnessPerceptual(this.targetSquare, square),
+          distance: getDistancePerceptual(this.targetSquare, square),
         }),
       );
 
