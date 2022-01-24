@@ -35,7 +35,7 @@ const routes = [
         meta: {
           title: 'K-means',
         },
-        component: () => import('pages/Evolution.vue'),
+        component: () => import('pages/Kmeans.vue'),
       },
       {
         path: 'regression',

@@ -1,4 +1,5 @@
 import { uid } from 'quasar';
+import { getRandomRgbComponent } from 'src/utils/evolution';
 
 export function createSquare(r, g, b, id, additional = {}) {
   return {
@@ -27,6 +28,14 @@ export function getDistanceRgbComponents(target, square) {
   ].reduce((a, b) => a + b) / 3;
 }
 
+export function getDistanceEuclidean(target, square) {
+  return Math.sqrt(
+    (target.r - square.r) ** 2
+    + (target.g - square.g) ** 2
+    + (target.b - square.b) ** 2,
+  );
+}
+
 export function getDistancePerceptual(target, square) {
   const rmean = (target.r + square.r) / 2;
   const r = target.r - square.r;
@@ -45,5 +54,17 @@ export function parseSquare(rgbString) {
     parseInt(rgb[0], 10),
     parseInt(rgb[1], 10),
     parseInt(rgb[2], 10),
+  );
+}
+
+export function generateDataset(count) {
+  return Array.from(Array(count)).map(
+    () => createSquare(
+      getRandomRgbComponent(),
+      getRandomRgbComponent(),
+      getRandomRgbComponent(),
+      null,
+      { tag: 'FALSE' },
+    ),
   );
 }

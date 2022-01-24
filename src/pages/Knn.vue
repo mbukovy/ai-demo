@@ -58,7 +58,7 @@
         </div>
       </div>
     </div>
-    <div class="col-3 q-pa-sm left-border">
+    <div class="col-3 q-pa-sm">
       <q-btn
         round
         flat
@@ -123,8 +123,9 @@
 
 <script>
 import ColorSquare from 'components/ColorSquare';
-import { generateDataset } from 'src/utils/knn';
-import { createSquare, getDistancePerceptual, parseSquare } from 'src/utils/color';
+import {
+  createSquare, getDistancePerceptual, parseSquare, generateDataset,
+} from 'src/utils/color';
 
 export default {
   name: 'PageKnn',
