@@ -76,10 +76,18 @@ const linksList = [
   },
   {
     title: 'K-means',
-    caption: 'Unsupervised learning, Segmentation',
+    caption: 'Unsupervised learning, Clustering',
     icon: 'school',
     route: {
       name: 'kmeans',
+    },
+  },
+  {
+    title: 'K-means Img',
+    caption: 'Image compression',
+    icon: 'school',
+    route: {
+      name: 'kmeans-image',
     },
   },
   {

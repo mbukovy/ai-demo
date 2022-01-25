@@ -38,6 +38,14 @@ const routes = [
         component: () => import('pages/Kmeans.vue'),
       },
       {
+        path: 'kmeans-image',
+        name: 'kmeans-image',
+        meta: {
+          title: 'K-means Image',
+        },
+        component: () => import('pages/KmeansImage.vue'),
+      },
+      {
         path: 'regression',
         name: 'regression',
         meta: {

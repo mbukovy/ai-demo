@@ -57,7 +57,7 @@
 <script>
 import ColorSquare from 'components/ColorSquare';
 import { generateDataset } from 'src/utils/color';
-import { kmeans } from 'src/utils/kmeans';
+import { optimizedKmeans } from 'src/utils/kmeans';
 
 export default {
   name: 'PageKmeans',
@@ -86,7 +86,7 @@ export default {
     },
 
     run() {
-      this.clusters = kmeans(this.k, this.dataset);
+      this.clusters = optimizedKmeans(this.k, this.dataset);
     },
   },
 };

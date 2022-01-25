@@ -70,3 +70,24 @@ export function kmeans(k, originalDataset) {
 
   return clusters;
 }
+
+export function optimizedKmeans(k, dataset, iterations = 10) {
+  let bestClusters = [];
+  let bestDistribution = dataset.length;
+
+  while (iterations--) {
+    const clusters = kmeans(k, dataset);
+
+    const distributionMean = clusters.reduce(
+      (sum, cluster) => sum + Math.abs(cluster.dataset.length - dataset.length / k),
+      0,
+    ) / clusters.length;
+
+    if (distributionMean < bestDistribution) {
+      bestDistribution = distributionMean;
+      bestClusters = clusters;
+    }
+  }
+
+  return bestClusters;
+}
