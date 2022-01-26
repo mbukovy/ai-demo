@@ -40,8 +40,11 @@ export function kmeans(k, originalDataset) {
     });
   }
 
+  console.log('kmeans: optimizing means');
   let distributionString = '0-0-0';
   while (true) {
+    console.log('.');
+
     // assign dataset items into clusters
     originalDataset = originalDataset.map((targetColor) => ({
       ...targetColor,
@@ -68,26 +71,28 @@ export function kmeans(k, originalDataset) {
     distributionString = newDistributionString;
   }
 
-  return clusters;
+  return { clusters, dataset: originalDataset };
 }
 
 export function optimizedKmeans(k, dataset, iterations = 10) {
-  let bestClusters = [];
+  let bestResult = [];
   let bestDistribution = dataset.length;
 
   while (iterations--) {
-    const clusters = kmeans(k, dataset);
+    console.log('optimizedKmeans: iteration', iterations);
 
-    const distributionMean = clusters.reduce(
+    const result = kmeans(k, dataset);
+
+    const distributionMean = result.clusters.reduce(
       (sum, cluster) => sum + Math.abs(cluster.dataset.length - dataset.length / k),
       0,
-    ) / clusters.length;
+    ) / result.clusters.length;
 
     if (distributionMean < bestDistribution) {
       bestDistribution = distributionMean;
-      bestClusters = clusters;
+      bestResult = result;
     }
   }
 
-  return bestClusters;
+  return bestResult;
 }
