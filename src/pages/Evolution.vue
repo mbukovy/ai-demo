@@ -1,18 +1,29 @@
 <template>
-  <q-page class="flex row">
+  <q-page class="flex row q-py-lg">
     <div class="col-9 q-pa-sm">
       <div class="row">
         <div class="col-3 text-h6">
           <div>Population: {{ populationCount }}</div>
           <div>Generation: {{ generation }}</div>
         </div>
-        <div class="col">
+        <div class="col-6 q-px-sm">
           <q-slider
             v-model="populationCount"
+            title="Population"
             :min="1"
             :max="400"
             :step="5"
             @change="init"
+          />
+        </div>
+        <div class="col-3 q-px-sm">
+          <q-slider
+            v-model="mutationRate"
+            title="Mutation Rate"
+            label-always
+            :min="0.01"
+            :max="0.5"
+            :step="0.01"
           />
         </div>
       </div>
@@ -77,6 +88,7 @@ export default {
       populationCount: 10,
       generation: 0,
       population: [],
+      mutationRate: 0.01,
       playing: false,
       bestFitSquare: {},
       interval: null,
@@ -112,7 +124,7 @@ export default {
         square.fitness = getFitness(this.target, square);
       });
 
-      this.population = getNewGeneration(this.population, 0.01);
+      this.population = getNewGeneration(this.population, this.mutationRate);
 
       this.population.forEach((square) => {
         square.fitness = getFitness(this.target, square);

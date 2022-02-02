@@ -1,4 +1,5 @@
 import { createSquare, getDistancePerceptual } from 'src/utils/color';
+import { getRandomArrayItem } from 'src/utils/helpers';
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -51,30 +52,30 @@ function crossover(mummy, daddy) {
   return createSquare(r, g, b, null, { fitness: 0 });
 }
 
-function crossoverBad(mummy, daddy) {
-  const r = (mummy.r + daddy.r) % 256;
-  const g = (mummy.g + daddy.g) % 256;
-  const b = (mummy.b + daddy.b) % 256;
-
-  return createSquare(r, g, b, null, { fitness: 0 });
-}
-
 export function getNewGeneration(population, mutationRate = 0.1) {
   const matingPool = getMatingPool(population);
   return population.map(({ id }) => {
-    if (Math.random() < mutationRate) {
-      return createSquare(
-        getRandomRgbComponent(),
-        getRandomRgbComponent(),
-        getRandomRgbComponent(),
-        id,
-        { fitness: 0 },
-      );
-    }
+    // Mutation option 1
+    // if (Math.random() < mutationRate) {
+    //   return createSquare(
+    //     getRandomRgbComponent(),
+    //     getRandomRgbComponent(),
+    //     getRandomRgbComponent(),
+    //     id,
+    //     { fitness: 0 },
+    //   );
+    // }
 
     const mummy = matingPool[getRandomIndex(matingPool)];
     const daddy = matingPool[getRandomIndex(matingPool)];
+    const child = crossover(mummy, daddy);
 
-    return crossover(mummy, daddy);
+    // Mutation option 2
+    if (Math.random() < mutationRate) {
+      const randomGene = getRandomArrayItem(['r', 'g', 'b']);
+      child[randomGene] = Math.floor(Math.random() * 255);
+    }
+
+    return child;
   });
 }
