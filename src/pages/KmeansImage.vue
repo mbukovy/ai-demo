@@ -125,7 +125,7 @@ export default {
         clusters.forEach((cluster) => {
           clusterColorMap[cluster.number] = cluster.color;
         });
-        console.log({ clusterColorMap });
+        // console.log({ clusterColorMap });
 
         this.repreColors = clusters.map(({ color }) => color);
 

@@ -49,7 +49,7 @@
       />
       <q-separator />
       <h5 class="text-grey">
-        CLASSIFICATION RESULT
+        CONFIDENCE
         {{ network.outputLayer[0].output.toFixed(4) }}
       </h5>
     </div>
@@ -77,7 +77,7 @@ const savedDataset = JSON.parse(
 );
 
 export default {
-  name: 'PageKnn',
+  name: 'PageNN',
   components: { ControlPanel, Neuron },
   data() {
     return {
@@ -86,7 +86,6 @@ export default {
       inTraining: false,
       targetColor: 'rgb(255,0,0)',
       network: null,
-      classificationResult: null,
     };
   },
   computed: {
@@ -110,9 +109,6 @@ export default {
 
   methods: {
     init() {
-      // const network = new Network(3, 3, 1);
-      // console.log(network);
-
       this.network = new Network(3, 3, 1);
       this.samplesTrained = 0;
     },

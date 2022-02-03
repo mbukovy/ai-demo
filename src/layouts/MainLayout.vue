@@ -39,7 +39,7 @@
           Essential Links
         </q-item-label>
 
-        <EssentialLink
+        <MenuLink
           v-for="link in essentialLinks"
           :key="link.title"
           v-bind="link"
@@ -55,55 +55,55 @@
 </template>
 
 <script>
-import EssentialLink from 'components/EssentialLink.vue';
+import MenuLink from 'components/MenuLink.vue';
 
 const linksList = [
   {
-    title: 'Evolution',
+    title: 'Genetic Algorithm',
     caption: 'Optimization',
-    icon: 'school',
+    icon: 'transgender',
     route: {
       name: 'evolution',
     },
   },
   {
-    title: 'K-NN',
-    caption: 'K nearest neighbors, Classification',
-    icon: 'school',
-    route: {
-      name: 'knn',
-    },
-  },
-  {
     title: 'K-means',
     caption: 'Unsupervised learning, Clustering',
-    icon: 'school',
+    icon: 'scatter_plot',
     route: {
       name: 'kmeans',
     },
   },
   {
     title: 'K-means Img',
-    caption: 'Image compression',
-    icon: 'school',
+    caption: 'Image preprocessing',
+    icon: 'image',
     route: {
       name: 'kmeans-image',
     },
   },
   {
-    title: 'Regression',
-    caption: 'Linear regression, Classification',
-    icon: 'school',
+    title: 'K-NN',
+    caption: 'K Nearest Neighbors, Classification',
+    icon: 'share',
     route: {
-      name: 'regression',
+      name: 'knn',
     },
   },
   {
-    title: '(ML) Neural Network',
+    title: 'Neural Network',
     caption: 'Classification',
-    icon: 'school',
+    icon: 'account_tree',
     route: {
       name: 'nn',
+    },
+  },
+  {
+    title: 'Digits',
+    caption: 'Hand-written digits recognition',
+    icon: 'pin',
+    route: {
+      name: 'digits',
     },
   },
 ];
@@ -114,7 +114,7 @@ export default defineComponent({
   name: 'MainLayout',
 
   components: {
-    EssentialLink,
+    MenuLink,
   },
 
   setup() {

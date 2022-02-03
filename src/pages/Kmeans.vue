@@ -17,7 +17,7 @@
           <b>CLUSTERS</b>
           <div
             v-for="cluster in clusters"
-            :key="cluster.number"
+            :key="cluster.clusterId"
           >
             <div class="row align-items-center">
               <ColorSquare :color="getSquareColor(cluster.color)" />
@@ -86,7 +86,8 @@ export default {
     },
 
     run() {
-      this.clusters = optimizedKmeans(this.k, this.dataset);
+      const { clusters } = optimizedKmeans(this.k, this.dataset);
+      this.clusters = clusters;
     },
   },
 };

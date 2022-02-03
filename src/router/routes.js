@@ -46,20 +46,20 @@ const routes = [
         component: () => import('pages/KmeansImage.vue'),
       },
       {
-        path: 'regression',
-        name: 'regression',
-        meta: {
-          title: 'Linear Regression',
-        },
-        component: () => import('pages/Evolution.vue'),
-      },
-      {
         path: 'nn',
         name: 'nn',
         meta: {
           title: 'Neural Network',
         },
         component: () => NeuralNetwork,
+      },
+      {
+        path: 'digits',
+        name: 'digits',
+        meta: {
+          title: 'Digits',
+        },
+        component: () => import('pages/Digits.vue'),
       },
     ],
   },
