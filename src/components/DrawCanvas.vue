@@ -11,7 +11,7 @@
 </template>
 
 <script>
-const BRUSH_SIZE = 10;
+const BRUSH_SIZE = 3;
 
 export default {
   name: 'DrawCanvas',
