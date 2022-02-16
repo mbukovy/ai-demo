@@ -48,7 +48,7 @@ const routes = [
         meta: {
           title: 'K-means Image',
         },
-        component: KmeansImage,g
+        component: KmeansImage,
       },
       {
         path: 'nn',
