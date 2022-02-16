@@ -67,7 +67,7 @@
 </template>
 
 <script>
-import { createSquare, getDistancePerceptual, parseSquare } from 'src/utils/color';
+import { parseSquare } from 'src/utils/color';
 import { Network } from 'src/utils/network';
 import Neuron from 'components/Neuron';
 import ControlPanel from 'components/ControlPanel';

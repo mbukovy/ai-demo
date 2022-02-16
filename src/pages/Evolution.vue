@@ -71,10 +71,10 @@
 <script>
 import ControlPanel from 'components/ControlPanel';
 import ColorSquare from 'components/ColorSquare';
+import { createPopulation, getFitness, getNewGeneration } from 'src/utils/evolution';
 import {
-  createPopulation, getFitness, getNewGeneration, getRandomRgbComponent,
-} from 'src/utils/evolution';
-import { createSquare, parseSquare } from 'src/utils/color';
+  createSquare, getDistanceEuclidean, getDistancePerceptual, parseSquare,
+} from 'src/utils/color';
 
 export default {
   name: 'PageEvolution',
@@ -88,7 +88,7 @@ export default {
       populationCount: 10,
       generation: 0,
       population: [],
-      mutationRate: 0.01,
+      mutationRate: 0.0,
       playing: false,
       bestFitSquare: {},
       interval: null,
@@ -115,7 +115,7 @@ export default {
 
   methods: {
     init() {
-      this.population = createPopulation(this.populationCount);
+      this.population = createPopulation(this.populationCount, this.target);
       this.generation = 0;
     },
 

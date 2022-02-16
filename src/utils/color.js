@@ -44,7 +44,7 @@ export function getDistancePerceptual(target, square) {
   const distance = Math.sqrt(
     (((512 + rmean) * r * r) >> 8) + 4 * g * g + (((767 - rmean) * b * b) >> 8),
   );
-  return 1 - (distance / 765);
+  return distance / 765;
 }
 
 export function parseSquare(rgbString) {

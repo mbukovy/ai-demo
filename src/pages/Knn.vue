@@ -157,7 +157,7 @@ export default {
         }),
       );
 
-      distances.sort((a, b) => Math.sign(b.distance - a.distance));
+      distances.sort((a, b) => Math.sign(a.distance - b.distance));
 
       const counts = { TRUE: 0, FALSE: 0 };
       for (let i = 0; i < this.k; i += 1) {

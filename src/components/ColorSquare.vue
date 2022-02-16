@@ -2,8 +2,9 @@
   <div
     class="q-ma-xs"
     :style="styles"
-    :title="title"
-  />
+  >
+    <q-tooltip>{{ title }}</q-tooltip>
+  </div>
 </template>
 
 <script>

@@ -9,26 +9,24 @@ export function getRandomRgbComponent() {
   return Math.floor(Math.random() * 255);
 }
 
-export function rgbToHex(square) {
-  return square.r.toString(16).padStart(2, '0')
-    + square.g.toString(16).padStart(2, '0')
-    + square.b.toString(16).padStart(2, '0');
-}
-
-export function createPopulation(count) {
-  return Array.from(Array(count)).map(
-    () => createSquare(
-      getRandomRgbComponent(),
-      getRandomRgbComponent(),
-      getRandomRgbComponent(),
-      null,
-      { fitness: 0 },
-    ),
-  );
-}
-
 export function getFitness(target, square) {
-  return getDistancePerceptual(target, square);
+  return 1 - getDistancePerceptual(target, square);
+}
+
+export function createPopulation(count, target) {
+  return Array.from(Array(count)).map(
+    () => {
+      const square = createSquare(
+        getRandomRgbComponent(),
+        getRandomRgbComponent(),
+        getRandomRgbComponent(),
+        null,
+        { fitness: 0 },
+      );
+      square.fitness = getFitness(target, square);
+      return square;
+    },
+  );
 }
 
 export function getMatingPool(population) {
