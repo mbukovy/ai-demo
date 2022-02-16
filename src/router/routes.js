@@ -1,6 +1,11 @@
 import MainLayout from 'layouts/MainLayout';
 import Evolution from 'pages/Evolution';
 import NeuralNetwork from 'pages/NeuralNetwork';
+import Knn from 'pages/Knn';
+import Kmeans from 'pages/Kmeans';
+import KmeansImage from 'pages/KmeansImage';
+import Digits from 'pages/Digits';
+import Error404 from 'pages/Error404';
 
 const routes = [
   {
@@ -11,7 +16,7 @@ const routes = [
   },
   {
     path: '/',
-    component: () => MainLayout,
+    component: MainLayout,
     children: [
       {
         path: 'evolution',
@@ -19,7 +24,7 @@ const routes = [
         meta: {
           title: 'Evolution',
         },
-        component: () => Evolution,
+        component: Evolution,
       },
       {
         path: 'knn',
@@ -27,7 +32,7 @@ const routes = [
         meta: {
           title: 'K-NN',
         },
-        component: () => import('pages/Knn.vue'),
+        component: Knn,
       },
       {
         path: 'kmeans',
@@ -35,7 +40,7 @@ const routes = [
         meta: {
           title: 'K-means',
         },
-        component: () => import('pages/Kmeans.vue'),
+        component: Kmeans,
       },
       {
         path: 'kmeans-image',
@@ -43,7 +48,7 @@ const routes = [
         meta: {
           title: 'K-means Image',
         },
-        component: () => import('pages/KmeansImage.vue'),
+        component: KmeansImage,g
       },
       {
         path: 'nn',
@@ -51,7 +56,7 @@ const routes = [
         meta: {
           title: 'Neural Network',
         },
-        component: () => NeuralNetwork,
+        component: NeuralNetwork,
       },
       {
         path: 'digits',
@@ -59,7 +64,7 @@ const routes = [
         meta: {
           title: 'Digits',
         },
-        component: () => import('pages/Digits.vue'),
+        component: Digits,
       },
     ],
   },
@@ -68,7 +73,7 @@ const routes = [
   // but you can also remove it
   {
     path: '/:catchAll(.*)*',
-    component: () => import('pages/Error404.vue'),
+    component: Error404,
   },
 ];
 
