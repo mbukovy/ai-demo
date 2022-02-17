@@ -74,22 +74,48 @@ export function kmeans(k, originalDataset) {
   return { clusters, dataset: originalDataset };
 }
 
+function getAverageClustersDistance(clusters) {
+  let sum = 0;
+  let c = 0;
+  clusters.forEach((cluster1) => {
+    clusters.forEach((cluster2) => {
+      if (cluster1.clusterId !== cluster2.clusterId) {
+        sum += getDistanceEuclidean(cluster1.color, cluster2.color);
+        c++;
+      }
+    });
+  });
+  return sum / c;
+}
+
+function getDistributionMean(clusters, datasetSize, k) {
+  return clusters.reduce(
+    (sum, cluster) => sum + Math.abs(cluster.dataset.length - datasetSize / k),
+    0,
+  ) / clusters.length;
+}
+
 export function optimizedKmeans(k, dataset, iterations = 10) {
   let bestResult = [];
-  let bestDistribution = dataset.length;
+  const bestDistribution = dataset.length;
+  let bestAvgDistance = 0;
 
   while (iterations--) {
     console.log('optimizedKmeans: iteration', iterations);
 
     const result = kmeans(k, dataset);
 
-    const distributionMean = result.clusters.reduce(
-      (sum, cluster) => sum + Math.abs(cluster.dataset.length - dataset.length / k),
-      0,
-    ) / result.clusters.length;
+    /* OPTIMIZE FOR THE BEST DISTRIBUTION */
+    // const distributionMean = getDistributionMean(result.clusters, dataset.length, k);
+    // if (distributionMean < bestDistribution) {
+    //   bestDistribution = distributionMean;
+    //   bestResult = result;
+    // }
 
-    if (distributionMean < bestDistribution) {
-      bestDistribution = distributionMean;
+    /* OPTIMIZE FOR THE BEST SEPARATION */
+    const averageClusterDistance = getAverageClustersDistance(result.clusters);
+    if (averageClusterDistance > bestAvgDistance) {
+      bestAvgDistance = averageClusterDistance;
       bestResult = result;
     }
   }
