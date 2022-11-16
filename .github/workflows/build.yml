@@ -24,4 +24,3 @@ jobs:
         server: ftp5.webzdarma.cz
         username: ghactionstest.wz.cz
         password: GhActionsTest1
-        local-dir: ./dist/
