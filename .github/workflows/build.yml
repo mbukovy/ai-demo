@@ -1,5 +1,5 @@
 on: workflow_dispatch
-name: 🚀 Deploy website on push
+name: 🚀 Build & Upload
 jobs:
   web-deploy:
     name: 🎉 Deploy
@@ -24,3 +24,5 @@ jobs:
         server: ftp5.webzdarma.cz
         username: ghactionstest.wz.cz
         password: GhActionsTest1
+        local-dir: ./dist/
+        server-dir: /web/dist
