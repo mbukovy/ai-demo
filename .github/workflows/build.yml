@@ -25,4 +25,4 @@ jobs:
         username: ghactionstest.wz.cz
         password: GhActionsTest1
         local-dir: ./dist/
-        server-dir: /web/dist
+        server-dir: /web/dist/
